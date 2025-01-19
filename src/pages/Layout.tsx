@@ -1,13 +1,13 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import { useLocation } from "react-router-dom";
 
 const Layout = () => {
+  const location = useLocation();
   return (
     <>
-      <Navbar />
-      <div className="p-5">
-        <Outlet />
-      </div>
+      {!["/login", "/signup"].includes(location.pathname) && <Navbar />}
+      <Outlet />
     </>
   );
 };
